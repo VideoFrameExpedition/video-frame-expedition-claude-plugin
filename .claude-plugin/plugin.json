@@ -1,0 +1,29 @@
+{
+  "name": "video-frame-expedition",
+  "displayName": "Video Frame Expedition",
+  "version": "1.0.0",
+  "description": "Edit in DaVinci Resolve with an AI assistant that knows what each shot contains: the MCP server of Video Frame Expedition for DaVinci Resolve (a local application) and a skill to edit with it. Requires Video Frame Expedition for DaVinci Resolve 1.1.1 or newer.",
+  "author": {
+    "name": "VideoFrameExpedition",
+    "url": "https://github.com/VideoFrameExpedition"
+  },
+  "homepage": "https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-windows",
+  "repository": "https://github.com/VideoFrameExpedition/video-frame-expedition-claude-plugin",
+  "license": "Apache-2.0",
+  "keywords": ["davinci-resolve", "video-editing", "mcp", "local-first", "video-analysis", "lm-studio"],
+  "userConfig": {
+    "app_url": {
+      "type": "string",
+      "title": "Application address",
+      "description": "MCP address of Video Frame Expedition. Keep the default when the application runs on this computer; otherwise its address on your local network or Tailscale, for instance http://100.64.12.34:8765/mcp.",
+      "default": "http://127.0.0.1:8765/mcp",
+      "required": true
+    },
+    "access_token": {
+      "type": "string",
+      "title": "Access token",
+      "description": "Only for an application on another computer: the token shown on its Connections page. Leave it empty on the application's own computer, where no token is asked.",
+      "sensitive": true
+    }
+  }
+}

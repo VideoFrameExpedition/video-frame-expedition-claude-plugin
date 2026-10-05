@@ -1,0 +1,15 @@
+{
+  "name": "video-frame-expedition",
+  "description": "Plugins for Video Frame Expedition for DaVinci Resolve.",
+  "owner": {
+    "name": "VideoFrameExpedition",
+    "url": "https://github.com/VideoFrameExpedition"
+  },
+  "plugins": [
+    {
+      "name": "video-frame-expedition",
+      "source": "./",
+      "description": "Edit in DaVinci Resolve with an AI assistant that knows what each shot contains."
+    }
+  ]
+}

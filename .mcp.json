@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "vfe-vision": {
+      "type": "http",
+      "url": "${user_config.app_url}",
+      "headers": {
+        "Authorization": "Bearer ${user_config.access_token}"
+      }
+    }
+  }
+}
