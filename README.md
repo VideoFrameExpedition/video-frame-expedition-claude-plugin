@@ -18,13 +18,17 @@ It brings two things:
 
 ## Requirements
 
-- **Video Frame Expedition for DaVinci Resolve 1.1.1 or newer**, installed and running (Windows 11, LM Studio with
-  a vision model): see [its README](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-windows#readme).
-- **Claude Code**.
-- For editing: **DaVinci Resolve Studio 21.1 or later**. The application's Resolve tools need its
-  « Resolve tools for the assistant » box (Connections page); for the rest, add the MCP server of
-  DaVinci Resolve Studio to Claude Code as well (Resolve offers it under File › Setup AI
-  Assistants).
+- **Video Frame Expedition for DaVinci Resolve 1.1.1 or newer**, installed and running: see
+  [its README](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-windows#readme).
+  The application needs Windows 11, for now; LM Studio can run on the same PC or on another
+  computer, under Windows, macOS or Linux.
+- **Claude Code**, on the application's computer or on another one (settings below).
+- For editing: **DaVinci Resolve Studio 21.1 or later**, under Windows, macOS or Linux. With the
+  "Resolve tools for the assistant" box (Connections page), the application drives Resolve even
+  on another computer: the AI assistant, the application and Resolve can be on three different
+  computers. For the rest (cross-dissolves, effects), DaVinci Resolve Studio's MCP server only
+  drives the Resolve of its own computer: add it to Claude Code on that computer (Resolve offers
+  it under File › Setup AI Assistants).
 - For the helper scripts of the skill: Python 3 and Windows PowerShell.
 
 ## Install
@@ -49,9 +53,9 @@ that Claude Code keeps a single connection.
 ## Use
 
 Ask in your own words, for instance:
-- « Look at the timeline open in Resolve and tell me what each clip contains. »
-- « Build a 45-second edit of the lake videos, with safe cuts. »
-- « Make a 9:16 version of this timeline, framed on the people. »
+- "Look at the timeline open in Resolve and tell me what each clip contains."
+- "Build a 45-second edit of the lake videos, with safe cuts."
+- "Make a 9:16 version of this timeline, framed on the people."
 
 Claude uses the skill on its own when a request is about editing in Resolve; you can also call
 it with `/video-frame-expedition:resolve-editing`.

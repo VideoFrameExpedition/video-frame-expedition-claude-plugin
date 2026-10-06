@@ -20,13 +20,18 @@ Il apporte deux choses :
 
 ## Prérequis
 
-- **Video Frame Expedition for DaVinci Resolve 1.1.1 ou plus récente**, installée et lancée (Windows 11, LM Studio avec
-  un modèle de vision) : voir [son README](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-windows/blob/main/README.fr.md).
-- **Claude Code**.
-- Pour monter : **DaVinci Resolve Studio 21.1 ou plus récent**. Les outils Resolve de
-  l'application demandent sa case « Outils Resolve pour l'assistant » (page Connexions) ; pour le
-  reste, ajoutez aussi à Claude Code le serveur MCP de DaVinci Resolve Studio (Resolve le propose
-  dans son menu Fichier, « Setup AI Assistants » dans l'interface anglaise).
+- **Video Frame Expedition for DaVinci Resolve 1.1.1 ou plus récente**, installée et lancée :
+  voir [son README](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-windows/blob/main/README.fr.md).
+  L'application demande Windows 11, pour le moment ; LM Studio peut tourner sur le même PC ou sur
+  un autre ordinateur, sous Windows, macOS ou Linux.
+- **Claude Code**, sur l'ordinateur de l'application ou sur un autre (réglages ci-dessous).
+- Pour monter : **DaVinci Resolve Studio 21.1 ou plus récent**, sous Windows, macOS ou Linux.
+  Avec la case « Outils Resolve pour l'assistant » (page Connexions), l'application pilote
+  Resolve même sur un autre ordinateur : l'assistant IA, l'application et Resolve peuvent être
+  sur trois ordinateurs différents. Pour le reste (fondus enchaînés, effets), le serveur MCP de
+  DaVinci Resolve Studio ne pilote que le Resolve de son propre ordinateur : ajoutez-le à Claude
+  Code sur cet ordinateur-là (Resolve le propose dans son menu Fichier, « Setup AI Assistants »
+  dans l'interface anglaise).
 - Pour les petits scripts du skill : Python 3 et Windows PowerShell.
 
 ## Installation
