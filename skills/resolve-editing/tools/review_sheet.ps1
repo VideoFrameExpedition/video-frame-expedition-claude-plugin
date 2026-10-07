@@ -12,6 +12,7 @@ param(
 )
 Add-Type -AssemblyName System.Drawing
 if (-not $OutDir) { $OutDir = Split-Path -Parent (Resolve-Path $Review) }
+New-Item -ItemType Directory -Force -Path $OutDir | Out-Null
 $data = Get-Content $Review -Raw -Encoding UTF8 | ConvertFrom-Json
 $pieces = @($data.pieces)
 if ($FlaggedOnly) { $pieces = @($pieces | Where-Object { $_.flags.Count -gt 0 }) }
@@ -28,11 +29,19 @@ $small = New-Object System.Drawing.Font("Arial", 8)
 $dim = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(170, 0, 0, 0))
 $ok = New-Object System.Drawing.Pen ([System.Drawing.Color]::Yellow), 2
 $bad = New-Object System.Drawing.Pen ([System.Drawing.Color]::Red), 3
+$labelBack = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(200, 0, 0, 0))
+$lightRed = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(255, 255, 110, 110))
 $sheet = 0
 $written = @()
 for ($i = 0; $i -lt $pieces.Count; $i += $RowsPerSheet) {
     $sheet++
-    $bmp = New-Object System.Drawing.Bitmap ($labelW + $cellW * $perRow), ($cellH * $RowsPerSheet)
+    # The sheet fits what it shows: a smaller picture is easier to read
+    $rows = [math]::Min($RowsPerSheet, $pieces.Count - $i)
+    $cols = 1
+    for ($r = 0; $r -lt $rows; $r++) {
+        $cols = [math]::Max($cols, [math]::Min($perRow, @($pieces[$i + $r].images).Count))
+    }
+    $bmp = New-Object System.Drawing.Bitmap ($labelW + $cellW * $cols), ($cellH * $rows)
     $g = [System.Drawing.Graphics]::FromImage($bmp)
     $g.Clear([System.Drawing.Color]::FromArgb(40, 40, 40))
     $g.InterpolationMode = [System.Drawing.Drawing2D.InterpolationMode]::HighQualityBicubic
@@ -63,8 +72,10 @@ for ($i = 0; $i -lt $pieces.Count; $i += $RowsPerSheet) {
             $pen = if ($low) { $bad } else { $ok }
             $g.DrawRectangle($pen, $x + $cx + 1, $y + $cy + 1, [math]::Max(2, $cw - 2), [math]::Max(2, $ch - 2))
             if ($im.cov -ne $null) {
-                $brush = if ($low) { [System.Drawing.Brushes]::Red } else { [System.Drawing.Brushes]::White }
-                $g.DrawString(("{0:P0}" -f $im.cov), $small, $brush, $x + 2, $y + $h - 14)
+                # On a dark box: readable over the frame's line and over dark footage
+                $g.FillRectangle($labelBack, $x + 1, $y + $h - 15, 34, 14)
+                $brush = if ($low) { $lightRed } else { [System.Drawing.Brushes]::White }
+                $g.DrawString(("{0:P0}" -f $im.cov), $small, $brush, $x + 3, $y + $h - 14)
             }
             $k++
         }

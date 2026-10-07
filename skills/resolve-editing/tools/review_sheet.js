@@ -47,6 +47,13 @@ function run(argv) {
   if (text.isNil()) throw new Error("cannot read " + review);
   var data = JSON.parse(text.js);
   if (!outDir) outDir = reviewPath.stringByDeletingLastPathComponent.js;
+  outDir = $(outDir).stringByExpandingTildeInPath.js;
+  $.NSFileManager.defaultManager.createDirectoryAtPathWithIntermediateDirectoriesAttributesError(
+    $(outDir),
+    true,
+    $(),
+    null
+  );
   var pieces = data.pieces || [];
   if (flaggedOnly) {
     pieces = pieces.filter(function (p) {
@@ -70,8 +77,8 @@ function run(argv) {
     }
   }
 
-  var W = labelW + cellW * perRow;
-  var H = cellH * rowsPerSheet;
+  var W = 0;
+  var H = 0;
   // AppKit counts y from the bottom: every rectangle below is given from the top, as on Windows
   function rect(x, y, w, h) {
     return $.NSMakeRect(x, H - y - h, w, h);
@@ -97,6 +104,8 @@ function run(argv) {
   var yellow = color(255, 255, 0, 255);
   var orange = color(255, 165, 0, 255);
   var red = color(255, 0, 0, 255);
+  var lightRed = color(255, 110, 110, 255);
+  var labelBack = color(0, 0, 0, 200);
   var white = color(255, 255, 255, 255);
   var dim = color(0, 0, 0, 170);
   var jpegType =
@@ -106,6 +115,14 @@ function run(argv) {
   var sheet = 0;
   for (var i = 0; i < pieces.length; i += rowsPerSheet) {
     sheet++;
+    // The sheet fits what it shows: a smaller picture is easier to read
+    var rows = Math.min(rowsPerSheet, pieces.length - i);
+    var cols = 1;
+    for (var q = 0; q < rows; q++) {
+      cols = Math.max(cols, Math.min(perRow, (pieces[i + q].images || []).length));
+    }
+    W = labelW + cellW * cols;
+    H = cellH * rows;
     var canvas =
       $.NSBitmapImageRep.alloc.initWithBitmapDataPlanesPixelsWidePixelsHighBitsPerSampleSamplesPerPixelHasAlphaIsPlanarColorSpaceNameBytesPerRowBitsPerPixel(
         null,
@@ -164,9 +181,11 @@ function run(argv) {
           rect(x + cx + 1, y + cy + 1, Math.max(2, cw - 2), Math.max(2, ch - 2))
         );
         if (hasCov) {
+          // On a dark box: readable over the frame's line and over dark footage
+          fill(labelBack, rect(x + 1, y + h - 15, 34, 14));
           $(Math.round(im.cov * 100) + " %").drawInRectWithAttributes(
-            rect(x + 2, y + h - 14, 60, 12),
-            attrs(small, low ? red : white)
+            rect(x + 3, y + h - 14, 60, 12),
+            attrs(small, low ? lightRed : white)
           );
         }
       }

@@ -20,7 +20,7 @@ body:
     attributes:
       label: Versions · Versions
       description: Plugin, Video Frame Expedition for DaVinci Resolve, Claude Code, DaVinci Resolve Studio, and the system (Windows or macOS). · Plugin, Video Frame Expedition for DaVinci Resolve, Claude Code, DaVinci Resolve Studio, et le système (Windows ou macOS).
-      placeholder: plugin 1.1.0, application 1.1.1, Claude Code 2.1, Resolve Studio 21.1.1, macOS 15.6
+      placeholder: plugin 1.1.1, application 1.1.1, Claude Code 2.1, Resolve Studio 21.1.1, macOS 15.6
     validations:
       required: true
   - type: textarea

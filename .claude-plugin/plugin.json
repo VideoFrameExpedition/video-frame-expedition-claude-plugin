@@ -1,7 +1,7 @@
 {
   "name": "video-frame-expedition",
   "displayName": "Video Frame Expedition",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Edit in DaVinci Resolve with an AI assistant that knows what each shot contains: the MCP server of Video Frame Expedition for DaVinci Resolve (a local application) and a skill to edit with it. Requires Video Frame Expedition for DaVinci Resolve 1.1.1 or newer, on Windows or macOS.",
   "author": {
     "name": "VideoFrameExpedition",
