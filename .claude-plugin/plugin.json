@@ -7,7 +7,7 @@
     "name": "VideoFrameExpedition",
     "url": "https://github.com/VideoFrameExpedition"
   },
-  "homepage": "https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-windows",
+  "homepage": "https://github.com/VideoFrameExpedition/video-frame-expedition-resolve",
   "repository": "https://github.com/VideoFrameExpedition/video-frame-expedition-claude-plugin",
   "license": "Apache-2.0",
   "keywords": ["davinci-resolve", "video-editing", "mcp", "local-first", "video-analysis", "lm-studio", "windows", "macos"],

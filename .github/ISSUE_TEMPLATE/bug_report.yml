@@ -5,9 +5,9 @@ body:
   - type: markdown
     attributes:
       value: |
-        Issues are public: remove any personal information (names, paths containing your user name, addresses, access tokens) before sending. A security flaw is reported privately, from the "Security" tab. A problem of the application itself belongs to its repository: [Windows](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-windows/issues), [macOS](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-macos/issues).
+        Issues are public: remove any personal information (names, paths containing your user name, addresses, access tokens) before sending. A security flaw is reported privately, from the "Security" tab. A problem of the application itself belongs to [its repository](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve/issues).
 
-        Les issues sont publiques : retirez toute information personnelle (noms, chemins contenant votre nom d'utilisateur, adresses, jetons d'accès) avant d'envoyer. Une faille de sécurité se signale en privé, depuis l'onglet « Security ». Un problème de l'application elle-même se signale dans son dépôt : [Windows](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-windows/issues), [macOS](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-macos/issues).
+        Les issues sont publiques : retirez toute information personnelle (noms, chemins contenant votre nom d'utilisateur, adresses, jetons d'accès) avant d'envoyer. Une faille de sécurité se signale en privé, depuis l'onglet « Security ». Un problème de l'application elle-même se signale dans [son dépôt](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve/issues).
   - type: textarea
     id: what-happened
     attributes:

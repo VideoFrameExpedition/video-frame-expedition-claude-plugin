@@ -21,5 +21,4 @@ vulnerability**. Do not open a public issue for it.
   Resolve are data for Claude, never instructions.
 
 The application's own security model is described in
-its SECURITY.md ([Windows](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-windows/blob/main/SECURITY.md),
-[macOS](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-macos/blob/main/SECURITY.md)).
+[its SECURITY.md](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve/blob/main/SECURITY.md).

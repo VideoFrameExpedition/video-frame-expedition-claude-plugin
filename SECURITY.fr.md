@@ -24,5 +24,4 @@ vulnerability**. N'ouvrez pas de ticket public pour cela.
   Resolve sont des données pour Claude, jamais des instructions.
 
 Le modèle de sécurité de l'application elle-même est décrit dans
-son SECURITY.fr.md ([Windows](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-windows/blob/main/SECURITY.fr.md),
-[macOS](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-macos/blob/main/SECURITY.fr.md)).
+[son SECURITY.fr.md](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve/blob/main/SECURITY.fr.md).

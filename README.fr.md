@@ -2,8 +2,8 @@
 
 # Plugin Video Frame Expedition pour Claude Code
 
-Un plugin qui relie Claude Code à Video Frame Expedition for DaVinci Resolve
-([Windows](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-windows/blob/main/README.fr.md), [macOS](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-macos/blob/main/README.fr.md)),
+Un plugin qui relie Claude Code à
+[Video Frame Expedition for DaVinci Resolve](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve/blob/main/README.fr.md),
 une application locale qui analyse vos rushs avec un modèle de vision local, pour qu'un assistant
 IA monte dans DaVinci Resolve en sachant ce que contient chaque plan.
 
@@ -20,10 +20,10 @@ Il apporte deux choses :
 
 ## Prérequis
 
-- **Video Frame Expedition for DaVinci Resolve 1.1.1 ou plus récente**, installée et lancée : la
-  [version Windows](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-windows/blob/main/README.fr.md) (Windows 11) ou la
-  [version macOS](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-macos/blob/main/README.fr.md). LM Studio peut
-  tourner sur le même ordinateur ou sur un autre, sous Windows, macOS ou Linux.
+- **Video Frame Expedition for DaVinci Resolve 1.1.1 ou plus récente**, installée et lancée,
+  sous Windows 11 ou sur un Mac à puce Apple Silicon : voir
+  [son README](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve/blob/main/README.fr.md). LM Studio peut tourner sur le même ordinateur ou
+  sur un autre, sous Windows, macOS ou Linux.
 - **Claude Code**, sur l'ordinateur de l'application ou sur un autre (réglages ci-dessous).
 - Pour monter : **DaVinci Resolve Studio 21.1 ou plus récent**, sous Windows, macOS ou Linux.
   Avec la case « Outils Resolve pour l'assistant » (page Connexions), l'application pilote
