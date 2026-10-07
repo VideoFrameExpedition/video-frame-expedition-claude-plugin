@@ -18,6 +18,12 @@ added; the short names below are the end of those names.
   predefined), plus `get_resolve_status`, `launch_resolve`, `search_scripting_api`,
   `get_scripting_api`.
 
+The application (Windows 11 or macOS), DaVinci Resolve (Windows, macOS or Linux) and you may be
+on three different computers. The helper scripts of this skill run on yours: on Windows with
+`python` and Windows PowerShell, on macOS with `python3` and `osascript` (your environment says
+which system you run on). Paths sent to Resolve are written the way Resolve's computer writes
+them (golden rule 11).
+
 Talk to the user in their own language. You are an assistant editor: propose, build a first pass,
 show what you did, never destroy their work.
 
@@ -32,7 +38,7 @@ Resolve's MCP** (templates R1, B1, B2, X1, V1 and `tools/reframe.py` are the fal
 answers that the tools are off, tell the user where to switch them on, or go on with the
 templates. Still yours: choosing shots, showing the edit list, LOOKING at every sheet of
 `plan_reframe` and fixing `anchor` / `rotation` / `subject` per item, reminding the user that the
-project is not saved (Ctrl+S in Resolve). Transitions are not covered by them: template T1.
+project is not saved (Ctrl+S in Resolve, Cmd+S on a Mac). Transitions are not covered by them: template T1.
 
 These tools never modify an existing timeline: they build a new one. The user may still ask you to
 work on the open timeline through Resolve's MCP; then follow golden rule 1.
@@ -100,7 +106,8 @@ work on the open timeline through Resolve's MCP; then follow golden rule 1.
   `launch_resolve`: Resolve can take a few minutes to start — then poll `get_resolve_status`
   patiently (`launch_resolve` itself gives up after 60 s while Resolve keeps starting).
 - If the Video Frame Expedition tools fail with a connection error, the application is not
-  running: ask the user to start it (`run.bat` in its folder) and retry. The address used is
+  running: ask the user to start it (`run.bat` in its folder on Windows, `run.command` on a Mac)
+  and retry. The address used is
   `${user_config.app_url}`.
 - Know which project and timeline you are in and tell the user: `list_resolve_timelines` gives
   the open project, its timelines, which ones are already in the application's library (their
@@ -174,15 +181,17 @@ work on the open timeline through Resolve's MCP; then follow golden rule 1.
 for any edit with more than one or two reframed items. The method, the options and the fixes are
 in `reference/reframe.md`. In short:
 - the edit list (final cuts) goes into
-  `python "${CLAUDE_PLUGIN_ROOT}/skills/resolve-editing/tools/reframe.py" edit.json OUT --subject mammal`.
+  `python "${CLAUDE_PLUGIN_ROOT}/skills/resolve-editing/tools/reframe.py" edit.json OUT --subject mammal`
+  (`python3` on macOS).
   It reads the subject's boxes from the application, aims at the **head** of a subject bigger than
   the crop, keeps one crop while the subject stays in it (no 2-second jumps), scores every
   keyframe and flags weak pieces;
-- `tools/review_sheet.ps1 -Review OUT\review.json` draws every keyframe with its crop; **look at
-  every sheet** (Read). Fix by item: `reframe.anchor` (`center` for a subject seen from above),
+- the review sheet tool draws every keyframe with its crop (Windows: `tools/review_sheet.ps1
+  -Review OUT\review.json`; macOS: `osascript -l JavaScript tools/review_sheet.js
+  OUT/review.json`); **look at every sheet** (Read). Fix by item: `reframe.anchor` (`center` for a subject seen from above),
   `reframe.rotation` (footage filmed sideways or upside down: nothing else detects it),
   `subject`, `off`, `props`. Then run again;
-- send `OUT\b2_<k>.py` unchanged to `run_script`: new timeline, items, transforms, checks.
+- send `b2_<k>.py` from OUT unchanged to `run_script`: new timeline, items, transforms, checks.
 
 Background and single items:
 - `get_reframe(video_id, t_start, t_end, timeline_width, timeline_height, subject?, headroom?)`
@@ -230,11 +239,12 @@ Background and single items:
 - `reference/reframe.md` — reframing method, options, review and limits.
 - `reference/resolve-21.md` — calibrated API facts and pitfalls of DaVinci Resolve Studio 21.1.
 
-## Tools (standard library Python + Windows PowerShell, nothing to install)
+## Tools (standard library Python, plus Windows PowerShell or macOS's `osascript`: nothing to install)
 All in `${CLAUDE_PLUGIN_ROOT}/skills/resolve-editing/tools/`.
 - `reframe.py` — reframe plan of an edit list: pieces, transforms, flags, review images,
   ready-to-send B2 scripts.
-- `review_sheet.ps1` — contact sheets of a plan (keyframes with the crop drawn over).
+- `review_sheet.ps1` (Windows) and `review_sheet.js` (macOS) — contact sheets of a plan
+  (keyframes with the crop drawn over); the same sheets on both systems.
 - `vfe_client.py` — minimal client of the application's MCP server, so that long results land in
   files, not in the conversation. Read-only calls only. Address: `VFE_MCP_URL` (set it to
   `${user_config.app_url}` when that is not the default `http://127.0.0.1:8765/mcp`); for an

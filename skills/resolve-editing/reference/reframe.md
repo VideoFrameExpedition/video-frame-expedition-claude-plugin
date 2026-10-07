@@ -38,12 +38,16 @@ where the head is):
    `uid` (media pool id from R1/M1), `in_s`, `out_s`, and `reframe` when needed (see below).
 2. Run the plan:
    `python "${CLAUDE_PLUGIN_ROOT}/skills/resolve-editing/tools/reframe.py" edit.json OUT --subject mammal`
-   Use the scratch folder for OUT; the timeline size comes from `format` or `--width/--height`.
+   (`python3` on macOS). Use the scratch folder for OUT; the timeline size comes from `format` or `--width/--height`.
    For people use `--subject person`, for a named animal the start of its label (`cat`).
    The printed summary lists the flagged pieces.
 3. Look at the pieces:
-   `powershell -NoProfile -ExecutionPolicy Bypass -File "${CLAUDE_PLUGIN_ROOT}/skills/resolve-editing/tools/review_sheet.ps1" -Review OUT\review.json`
-   (`-FlaggedOnly` for the flagged ones only). Open the `review_NN.jpg` with Read. Each row is a
+   - Windows: `powershell -NoProfile -ExecutionPolicy Bypass -File "${CLAUDE_PLUGIN_ROOT}/skills/resolve-editing/tools/review_sheet.ps1" -Review OUT\review.json`
+     (`-FlaggedOnly` for the flagged ones only);
+   - macOS: `osascript -l JavaScript "${CLAUDE_PLUGIN_ROOT}/skills/resolve-editing/tools/review_sheet.js" OUT/review.json`
+     (`--flagged-only` for the flagged ones only).
+
+   Open the `review_NN.jpg` with Read. Each row is a
    piece and each image a keyframe: yellow frame = what the timeline shows, outside dimmed,
    percentage = `cov`, red = below `--flag`.
 4. Fix, then run the plan again (it is deterministic and takes a minute):
@@ -54,7 +58,7 @@ where the head is):
      (zoom only); -90 turns the picture's left side up (checked on exported stills);
    - wrong subject: `"subject": "person"`…; no framing at all: `"off": true`;
      exact values: `"props": {"ZoomX":…, "ZoomY":…, "Pan":…, "Tilt":…, "RotationAngle":…}`.
-5. Send `OUT\b2_1.py`, then `b2_2.py`… **unchanged** to `run_script` (template B2 below). Batch 1
+5. Send `b2_1.py` from OUT, then `b2_2.py`… **unchanged** to `run_script` (template B2 below). Batch 1
    creates the timeline named in the edit list (`timeline`) and fails if the name exists. The
    others append to it by name. Each checks durations and read-back transforms (`bad_durations`,
    `prop_fails`).

@@ -6,6 +6,8 @@ behaviour seen and the way to work with it; later versions may behave differentl
 forms only: `GetSettings()`/`SetSettings({})`,
 `GetProperties()`/`SetProperties({})`, `GetClipProperty()[key]`, `SetMetadata({})`,
 `AppendToTimeline([{clipInfo}])`.
+The scripting API is the same on macOS: Resolve Studio 21.1.1 on a Mac was read and driven over
+the network by the application. Points that depend on the system say so.
 
 ## run_script transport and sandbox
 - Non-ASCII characters in the **script text** are corrupted: `ImportMedia([r"...\café.mp4"])`
@@ -154,9 +156,18 @@ forms only: `GetSettings()`/`SetSettings({})`,
   application did not write. It lays the timeline's own (data folder) in Resolve; for Resolve on
   another computer, from next to the timeline's first video (`<timeline>_TIMELINE_<LANG>.srt`,
   through the folder pairs; the share must be writable).
-- Resolve on another computer: its firewall must let in `fuscript.exe` (port 1144) AND
-  `Resolve.exe` (a port picked at each start). On Windows, the rules Resolve installs hold for
-  « private » networks only (a network marked « public » is not covered): port 1144 open alone
-  still gives « connection refused ».
+- Resolve on another computer: its firewall must let in Resolve's scripting server (port 1144)
+  AND Resolve itself (a port picked at each start). On Windows these are `fuscript.exe` and
+  `Resolve.exe`, and the rules Resolve installs hold for « private » networks only (a network
+  marked « public » is not covered): port 1144 open alone still gives « connection refused ». On
+  macOS, the firewall (System Settings › Network › Firewall), when it is on, must allow incoming
+  connections for DaVinci Resolve.
+- The application reads a Resolve on another computer through Resolve's scripting library
+  installed on its own computer: `fusionscript.dll` on Windows, `fusionscript.so` inside
+  `DaVinci Resolve.app/Contents/Libraries/Fusion/` on macOS. Resolve stays installed there, not
+  started.
+- On macOS a network share is mounted as `/Volumes/<share name>` (a share named « Videos
+  samples » is `/Volumes/Videos samples`). The folder pairs of the application must use that
+  exact name: a wrong one still passes « Test the connection », then no file is found.
 - An MP4's chapter track is read on import as blue one-frame clip markers (« Start » at 0,
   then each chapter's title).

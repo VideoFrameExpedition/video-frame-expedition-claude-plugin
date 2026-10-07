@@ -40,6 +40,9 @@ Rules:
   in Resolve.
 - `uid` (media pool unique id from R1/M1) when the clip is already in the project; otherwise `file`
   (B1 imports it). When you put `file` into a script, escape non-ASCII characters (`\\u00e9`).
+- `file` is the path as DaVinci Resolve sees it: `C:\...` on Windows, `/Volumes/...` or
+  `/Users/...` on macOS (the examples above are Windows ones); with Resolve on another computer,
+  the application's `resolve_path`.
 - `transition_in`: `"cut"` or `{"type": "dissolve", "frames": 8..30}` — the templates handle
   nothing else. Use dissolves sparingly (a change of place or time, the end of a sequence);
   default is cut.

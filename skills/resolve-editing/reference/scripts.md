@@ -5,6 +5,9 @@ server (`timeout` up to 60). Keep the whole script ASCII: inside `PARAMS`, write
 `\\u00e9` (the JSON escape, doubled because it sits in a Python string). Every template returns a
 small `result` dict or `{"error": ...}`.
 
+The paths in the examples are Windows ones. On macOS, write them the way Resolve shows them there
+(`/Volumes/Rushs/Lake/...`, `/Users/me/Movies/...`); the templates themselves do not change.
+
 Common helpers (paste at the top of the templates that need them):
 
 ```python
@@ -303,7 +306,8 @@ except Exception as ex:
 out the script. After that, no script answered any more (even `GetCurrentPage()`), until the user
 cleared Resolve, and the `SetProperties` of that call were lost. To check many framings, use the
 review sheets of `tools/reframe.py` instead: no Resolve needed.
-The folder must exist (create it first with a shell command); ASCII path.
+The folder must exist (create it first with a shell command); ASCII path, ending with the
+separator (`/tmp/vfe-stills/` on macOS).
 
 ```python
 import json

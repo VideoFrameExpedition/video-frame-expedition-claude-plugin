@@ -5,9 +5,9 @@ body:
   - type: markdown
     attributes:
       value: |
-        Issues are public: remove any personal information (names, paths containing your user name, addresses, access tokens) before sending. A security flaw is reported privately, from the "Security" tab. A problem of the application itself belongs to [its repository](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-windows/issues).
+        Issues are public: remove any personal information (names, paths containing your user name, addresses, access tokens) before sending. A security flaw is reported privately, from the "Security" tab. A problem of the application itself belongs to its repository: [Windows](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-windows/issues), [macOS](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-macos/issues).
 
-        Les issues sont publiques : retirez toute information personnelle (noms, chemins contenant votre nom d'utilisateur, adresses, jetons d'accès) avant d'envoyer. Une faille de sécurité se signale en privé, depuis l'onglet « Security ». Un problème de l'application elle-même se signale dans [son dépôt](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-windows/issues).
+        Les issues sont publiques : retirez toute information personnelle (noms, chemins contenant votre nom d'utilisateur, adresses, jetons d'accès) avant d'envoyer. Une faille de sécurité se signale en privé, depuis l'onglet « Security ». Un problème de l'application elle-même se signale dans son dépôt : [Windows](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-windows/issues), [macOS](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-macos/issues).
   - type: textarea
     id: what-happened
     attributes:
@@ -19,8 +19,8 @@ body:
     id: versions
     attributes:
       label: Versions · Versions
-      description: Plugin, Video Frame Expedition for DaVinci Resolve, Claude Code, DaVinci Resolve Studio. · Plugin, Video Frame Expedition for DaVinci Resolve, Claude Code, DaVinci Resolve Studio.
-      placeholder: plugin 1.0.0, application 1.1.1, Claude Code 2.1, Resolve Studio 21.1.1
+      description: Plugin, Video Frame Expedition for DaVinci Resolve, Claude Code, DaVinci Resolve Studio, and the system (Windows or macOS). · Plugin, Video Frame Expedition for DaVinci Resolve, Claude Code, DaVinci Resolve Studio, et le système (Windows ou macOS).
+      placeholder: plugin 1.1.0, application 1.1.1, Claude Code 2.1, Resolve Studio 21.1.1, macOS 15.6
     validations:
       required: true
   - type: textarea

@@ -2,8 +2,8 @@
 
 # Video Frame Expedition plugin for Claude Code
 
-A plugin that connects Claude Code to
-[Video Frame Expedition for DaVinci Resolve](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-windows),
+A plugin that connects Claude Code to Video Frame Expedition for DaVinci Resolve
+([Windows](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-windows), [macOS](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-macos)),
 a local application that analyses your rushes with a local vision model, so that an AI assistant
 can edit in DaVinci Resolve knowing what each shot contains.
 
@@ -18,10 +18,10 @@ It brings two things:
 
 ## Requirements
 
-- **Video Frame Expedition for DaVinci Resolve 1.1.1 or newer**, installed and running: see
-  [its README](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-windows#readme).
-  The application needs Windows 11, for now; LM Studio can run on the same PC or on another
-  computer, under Windows, macOS or Linux.
+- **Video Frame Expedition for DaVinci Resolve 1.1.1 or newer**, installed and running: the
+  [Windows version](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-windows#readme) (Windows 11) or the
+  [macOS version](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-macos#readme). LM Studio can run on the
+  same computer or on another one, under Windows, macOS or Linux.
 - **Claude Code**, on the application's computer or on another one (settings below).
 - For editing: **DaVinci Resolve Studio 21.1 or later**, under Windows, macOS or Linux. With the
   "Resolve tools for the assistant" box (Connections page), the application drives Resolve even
@@ -29,7 +29,8 @@ It brings two things:
   computers. For the rest (cross-dissolves, effects), DaVinci Resolve Studio's MCP server only
   drives the Resolve of its own computer: add it to Claude Code on that computer (Resolve offers
   it under File › Setup AI Assistants).
-- For the helper scripts of the skill: Python 3 and Windows PowerShell.
+- For the helper scripts of the skill: Python 3, with Windows PowerShell on Windows or
+  `osascript` (part of macOS) on a Mac.
 
 ## Install
 
@@ -70,8 +71,8 @@ Only the application, at the address you set. The skill's helper scripts call th
 (read-only tools). DaVinci Resolve's own MCP server, if you add it, is separate from this plugin.
 Nothing else is downloaded or sent.
 
-The plugin has no hooks: nothing runs on its own. The skill's Python and PowerShell scripts run
-only when Claude calls them for a task you asked for, and they download nothing. To report a
+The plugin has no hooks: nothing runs on its own. The skill's scripts (Python, plus PowerShell on
+Windows or JavaScript for Automation on macOS) run only when Claude calls them for a task you asked for, and they download nothing. To report a
 vulnerability, see [SECURITY.md](SECURITY.md).
 
 ## Licence

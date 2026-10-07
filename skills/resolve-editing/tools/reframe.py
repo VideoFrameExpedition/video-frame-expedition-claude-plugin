@@ -12,7 +12,8 @@ Input: an edit list (reference/edit-list.md): items with ``video_id``, ``uid`` (
 - ``b2_<k>.py``: ready-to-send ``run_script`` scripts (template B2) that build the timeline and
   apply the transforms, one batch each, in order;
 - ``review.json`` + ``kf/*.jpg``: the keyframes of every reframed piece with its crop, for
-  ``review_sheet.ps1`` (contact sheets to look at with Read).
+  ``review_sheet.ps1`` on Windows or ``review_sheet.js`` on macOS (contact sheets to look at
+  with Read).
 
 Method (reference/reframe.md): Video Frame Expedition gives the subject's box at each keyframe
 (``get_reframe``, about every 2 s). A subject bigger than the crop is aimed at by its top part
@@ -26,7 +27,6 @@ from __future__ import annotations
 
 import argparse
 import base64
-import itertools
 import json
 import os
 import re
@@ -235,7 +235,7 @@ def plan_item(client, item, W, H, subject, min_piece, keep, flag):
             [a]
             + [
                 min(b, max(a, (g[-1]["t"] + n[0]["t"]) / 2))
-                for g, n in itertools.pairwise(groups)
+                for g, n in zip(groups, groups[1:])
             ]
             + [b]
         )

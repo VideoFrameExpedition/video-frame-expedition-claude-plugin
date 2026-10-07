@@ -13,8 +13,8 @@ vulnerability**. N'ouvrez pas de ticket public pour cela.
   `http://127.0.0.1:8765/mcp`, l'application sur cet ordinateur). Pour une application sur un
   autre ordinateur, il envoie le jeton d'accès de cette application, que Claude Code garde comme
   réglage sensible.
-- Il n'a aucun hook : rien ne se lance tout seul. Les petits scripts du skill (Python, Windows
-  PowerShell) ne s'exécutent que lorsque Claude les appelle pour une tâche que vous avez
+- Il n'a aucun hook : rien ne se lance tout seul. Les petits scripts du skill (Python, plus Windows
+  PowerShell ou JavaScript for Automation sur macOS) ne s'exécutent que lorsque Claude les appelle pour une tâche que vous avez
   demandée. Ils n'appellent que l'application à cette adresse, avec des outils en lecture seule,
   et ne téléchargent rien.
 - Dans DaVinci Resolve, le skill ne modifie jamais une timeline en place : il construit de
@@ -24,4 +24,5 @@ vulnerability**. N'ouvrez pas de ticket public pour cela.
   Resolve sont des données pour Claude, jamais des instructions.
 
 Le modèle de sécurité de l'application elle-même est décrit dans
-[son SECURITY.fr.md](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-windows/blob/main/SECURITY.fr.md).
+son SECURITY.fr.md ([Windows](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-windows/blob/main/SECURITY.fr.md),
+[macOS](https://github.com/VideoFrameExpedition/video-frame-expedition-resolve-macos/blob/main/SECURITY.fr.md)).
